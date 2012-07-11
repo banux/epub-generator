@@ -1,0 +1,10 @@
+Word
+Clean word generated html
+<span style="font-style:italic;">(.*?)</span>
+<em>\1</em>
+(\w)\?
+\1&nbsp;?
+- (.*?) -
+&ndash;&nbsp;\1&nbsp;&ndash;
+« (.*?) »
+&laquo;&nbsp;\1&nbsp;&raquo;
