@@ -1,0 +1,9 @@
+---
+:html:
+- ebook.xhtml
+:css:
+- ebook.css
+:font: []
+:metadata:
+  :author: 'Author'
+  :title: 'Default'

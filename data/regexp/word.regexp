@@ -1,7 +1,11 @@
 Word
 Clean word generated html
+class="font\d*" 
+
 <span style="font-style:italic;">(.*?)</span>
 <em>\1</em>
+<span>(.*?)</span>
+\1
 (\w)\?
 \1&nbsp;?
 - (.*?) -

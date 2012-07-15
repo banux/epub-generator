@@ -1,0 +1,50 @@
+Abby
+Clean abby generated html
+<span class="font\d*">(.*?)</span>
+\1
+class="font\d*"
+
+<a name="bookmark\d*"></a>
+
+¬<br/>
+
+<br/>
+ 
+&nbsp;&nbsp;&nbsp;
+&nbsp;
+— 
+&mdash;&nbsp;
+&mdash;&nbsp;&nbsp;
+&mdash;&nbsp;
+<span.*style="font-style:italic;">(.*?)</span>
+<em>\1</em>
+<span.*style="font-weight:bold;">(.*?)</span>
+<strong>\1</strong>
+<span>(.*?)</span>
+\1
+ \?
+&nbsp;?
+ !
+&nbsp;!
+ :
+&nbsp;:
+ ;
+&nbsp;;
+(\w)\?
+\1&nbsp;?
+(\w)!
+\1&nbsp;!
+(\w):
+\1&nbsp;:
+- (.*?) -
+&ndash;&nbsp;\1&nbsp;&ndash;
+« 
+&laquo;&nbsp;
+ »
+&nbsp;&raquo;
+«
+&laquo;&nbsp;
+»
+&nbsp;&raquo;
+A 
+À 
