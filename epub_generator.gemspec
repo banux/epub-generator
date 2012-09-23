@@ -4,8 +4,8 @@ require File.expand_path('../lib/epub_generator/version', __FILE__)
 Gem::Specification.new do |gem|
   gem.authors       = ["banux"]
   gem.email         = ["banux@helheim.net"]
-  gem.description   = %q{TODO: Write a gem description}
-  gem.summary       = %q{TODO: Write a gem summary}
+  gem.description   = %q{Generate an epub}
+  gem.summary       = %q{generate an epub}
   gem.homepage      = ""
 
   gem.files         = `git ls-files`.split($\)

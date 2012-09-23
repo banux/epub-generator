@@ -1,43 +1,54 @@
 require 'yaml'
-require 'psych'
 
 module EpubGenerator
 
   class Config
 
-    DEFAULT_CONFIG = 'epub.yaml'
-
-    attr_reader :html, :css, :font, :title, :author, :metadata
-
-    def initialize(new_directory = '')
-      if(new_directory != '')        
-        @@html ||= ['ebook.xhtml']
-        @@css ||= ['ebook.css']
-        @@font ||= []
-        @@title ||= ''
-        @@author ||= ''
-        @@metadata ||= []
-        create(new_directory)
-      else
-        parse(DEFAULT_CONFIG)
+    def initialize(data = {})
+      @data = {}
+      update!(data)
+      if @data.empty?
+        self.parse
       end
     end
 
-    def create(directory)
-      f = File.open(directory + '/' + DEFAULT_CONFIG.to_s, 'w+')
-      conf = {
-        :html => @@html, :css => @@css, :font => @@font,
-        :metadata => {:author => @@author, :title => @@title}
-     }
-     f.puts Psych.dump conf
-     f.close
+    def update!(data)
+      data.each do |key, value|
+        self[key] = value
+      end
     end
 
-    def parse(file)
-      conf = Psych.load(File.open(DEFAULT_CONFIG).read)
-      puts conf.inspect
+    def [](key)
+      @data[key.to_sym]
+    end
+
+    def []=(key, value)
+      if value.class == Hash
+        @data[key.to_sym] = Config.new(value)
+      else
+        @data[key.to_sym] = value
+      end
+    end
+
+    def method_missing(sym, *args)
+      if sym.to_s =~ /(.+)=$/
+        self[$1] = args.first
+      else
+        self[sym]
+      end
+    end
+
+    def parse
+      if File.exist?("epub.yml")        
+        update!(YAML.load(File.open("epub.yml").read))
+      end
+    end
+
+    def write
+      File.open('epub.yml', 'w+') do |f|
+        f.puts YAML.dump(@data)
+      end
     end
 
   end
-
 end

@@ -4,4 +4,6 @@ source 'https://rubygems.org'
 gemspec
 
 gem 'thor'
-gem 'psych'
+gem 'nokogiri'
+gem 'eeepub', :git => 'git://github.com/banux/eeepub.git'
+gem 'uuid'

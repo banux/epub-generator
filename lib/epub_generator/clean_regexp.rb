@@ -23,16 +23,16 @@ module EpubGenerator
 
 		def parse(file)
 			lines = File.open(file).readlines
-			title = lines[0].strip
-			description = lines[1].strip
+			title = lines[0].chomp
+			description = lines[1].chomp
 			regexps = []
 			i = 2
 			while i < lines.size
-				search_str = lines[i]
+				search_str = lines[i].chomp
 				i = i + 1
-				replace_str = lines[i]
+				replace_str = lines[i].chomp
 				i = i + 1
-				regexps.push({:search_str => search_str, :replace_str => replace_str})
+				regexps.push({:search_str => Regexp.new(search_str), :replace_str => replace_str})
 			end
 			return {:title => title, :description => description, :regexps => regexps}
 		end
@@ -40,6 +40,12 @@ module EpubGenerator
 		def run_regexp(regexp = '', file = '')
 			if regexp != ''
 				reg = find_regexp(regexp)
+				puts "running " + reg[:title] + ' on ' + file
+				buff = File.open(file).read
+				reg[:regexps].each do |r|
+					buff.gsub!(r[:search_str], r[:replace_str])
+				end
+				File.open(file, "w") { |file| file.puts buff }
 			end
 		end
 

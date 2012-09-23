@@ -16,10 +16,14 @@ class="font\d*"
 &mdash;&nbsp;
 &mdash;&nbsp;&nbsp;
 &mdash;&nbsp;
+&mdash;([^&])
+&mdash;&nbsp;\1
 <span.*style="font-style:italic;">(.*?)</span>
 <em>\1</em>
 <span.*style="font-weight:bold;">(.*?)</span>
 <strong>\1</strong>
+<span.*style="font-weight:bold;font-style:italic;">(.*?)</span>
+<em>\1</em>
 <span>(.*?)</span>
 \1
  \?
@@ -48,3 +52,5 @@ class="font\d*"
 &nbsp;&raquo;
 A 
 À 
+\.\.\.
+&hellip;

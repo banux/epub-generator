@@ -3,7 +3,9 @@
 - ebook.xhtml
 :css:
 - ebook.css
+:img:
+- cover.jpg
 :font: []
-:metadata:
-  :author: 'Author'
-  :title: 'Default'
+:author: 'Author'
+:title: 'Default'
+:publisher 'Publisher'
